@@ -66,8 +66,10 @@ Archivo generado por `python -m dsrv.recovery_report` a partir de los archivos d
 - **Repositorio de modelos:** {summary['hf_repo']}
 - **Inicio:** {summary['inicio']}
 - **Fin:** {summary['fin']}
-- **Entorno:** clon, venv y caché de Hugging Face nuevos, con descarga anónima de los modelos. Misma
-  máquina y sistema operativo del entrenamiento (WSL).
+- **Descargas de Hugging Face:** sin sesión (repos públicos), con una caché nueva.
+- **Credenciales:** solo `dvc pull` usó un token de DagsHub, que se borró del clon al terminar.
+- **Entorno:** clon, venv y caché nuevos, pero el entorno nuevo comparte máquina y sistema operativo
+  con el entrenamiento (WSL). No prueba la recuperación en otra máquina u otro sistema operativo.
 
 ## Coincidencias con las predicciones originales
 

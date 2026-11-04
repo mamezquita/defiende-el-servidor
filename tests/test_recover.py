@@ -342,6 +342,8 @@ def test_report_states_success_and_shows_the_table():
     assert f"`{SHA_V1}`" in text
     assert "| 40/40 | 40/40 |" in text
     assert "Total: 3 s." in text
+    assert "sin sesión (repos públicos)" in text
+    assert "comparte máquina y sistema operativo" in text
 
 
 def test_report_states_failure_if_any_comparison_failed():

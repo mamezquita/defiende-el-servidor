@@ -1,0 +1,17 @@
+{
+  "version": "v1",
+  "hf_repo": "MiguelAngelAB/unsw-nb15-defiende-servidor",
+  "hf_sha": "6010585cc8729c73d88d5b0d9acb360e0065a351",
+  "filas": 40,
+  "filas_referencia": 40,
+  "coincidencias_row_id": 40,
+  "coincidencias_y_pred": 40,
+  "diferencia_maxima_score": 0.0,
+  "tolerancia_score": 1e-09,
+  "resultado": "OK",
+  "umbral": 0.5,
+  "sha256_entradas": "268c48d7e6a9c9893e62532662ccb9ea5806144ec560a06d02bf640ee602af44",
+  "sha256_referencia": "43c66bb0e350f854c3f92bbe7743d990b5c4614dde326c61cee33700223b7a0f",
+  "sha256_modelo": "2a968766d5e661ebfe05b174370c5272fc99bdd0befeafc4d17cdc2e365d98ab",
+  "sha256_salida": "43c66bb0e350f854c3f92bbe7743d990b5c4614dde326c61cee33700223b7a0f"
+}

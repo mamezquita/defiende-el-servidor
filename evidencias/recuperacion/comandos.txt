@@ -1,0 +1,19 @@
+git clone https://github.com/mamezquita/defiende-el-servidor.git <WorkDir>/repo 
+git checkout --detach c48ecfb187274bbafd94d708b2e321b8d9d5ee25 
+git rev-parse HEAD 
+git --no-pager show v1 --stat 
+git --no-pager show v2 --stat 
+python3.11 -m venv .venv 
+.venv/bin/python --version 
+.venv/bin/python -m pip install --progress-bar off -r requirements.txt 
+.venv/bin/python -m pip install --progress-bar off -e . 
+.venv/bin/dvc remote modify origin --local access_key_id "$DAGSHUB_TOKEN"
+.venv/bin/dvc remote modify origin --local secret_access_key "$DAGSHUB_TOKEN"
+.venv/bin/dvc pull 
+.venv/bin/dvc status 
+.venv/bin/python -m dsrv.verify_data --out <WorkDir>/salida 
+export HF_HOME=<WorkDir>/hf_home
+mkdir -p <WorkDir>/hf_home 
+sha256sum -c entradas_fijas.csv.sha256 
+.venv/bin/python -m dsrv.recover --version v1 --sha 6010585cc8729c73d88d5b0d9acb360e0065a351 --hf-repo MiguelAngelAB/unsw-nb15-defiende-servidor --inputs evidencias/recuperacion/entradas_fijas.csv --reference evidencias/recuperacion/predicciones_originales_v1.csv --out <WorkDir>/salida 
+.venv/bin/python -m dsrv.recover --version v2 --sha d0375af37f9abf49930b4ec76b7430446098f1f9 --hf-repo MiguelAngelAB/unsw-nb15-defiende-servidor --inputs evidencias/recuperacion/entradas_fijas.csv --reference evidencias/recuperacion/predicciones_originales_v2.csv --out <WorkDir>/salida 
