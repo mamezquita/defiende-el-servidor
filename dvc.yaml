@@ -1,0 +1,10 @@
+stages:
+  prepare:
+    cmd: python -m dsrv.prepare
+    deps:
+    - data/raw/UNSW_NB15_training-set.csv
+    - src/dsrv/config.py
+    - src/dsrv/hashing.py
+    - src/dsrv/prepare.py
+    outs:
+    - data/prepared

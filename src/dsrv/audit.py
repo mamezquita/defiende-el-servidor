@@ -11,11 +11,19 @@ from dsrv.config import (
     CONFIGS_DIR,
     EVIDENCE_DIR,
     EXCLUDED_COLUMNS,
+    PREPARED_DIR,
     TARGET_COLUMN,
     load_yaml,
     resolve_path,
 )
 from dsrv.hashing import sha256_dataframe_rows, sha256_file
+from dsrv.prepare import (
+    CLEANING_POLICY,
+    MANIFEST_NAME,
+    REASON_CONTRADICTORY,
+    SPLITS_NAME,
+    read_raw_csv,
+)
 
 SOURCE_CONFIG = CONFIGS_DIR / "data_source.yaml"
 AUDIT_JSON = EVIDENCE_DIR / "auditoria.json"
@@ -30,14 +38,6 @@ EXCLUSION_REASONS = {
     "attack_cat": "Fuga de información: describe el tipo de ataque, es decir, el objetivo.",
     "id": "Identificador de fila sin información de la conexión.",
 }
-
-
-def read_raw_csv(path: str | Path) -> pd.DataFrame:
-    """Lee un CSV original.
-
-    Los CSV traen BOM: sin utf-8-sig, la columna id podría no reconocerse como excluida.
-    """
-    return pd.read_csv(resolve_path(path), encoding="utf-8-sig", low_memory=False)
 
 
 def _value_counts(series: pd.Series) -> dict[str, int]:
@@ -112,6 +112,62 @@ def cross_stats(
         "grupos_con_alguna_etiqueta_distinta": int(overlap.loc[differs, "hash"].nunique()),
         "filas_sin_etiqueta_coincidente": int(no_match.sum()),
     }
+
+
+def partition_cross_stats(
+    test_hashes: pd.Series, prepared_dir: str | Path = PREPARED_DIR
+) -> dict[str, dict[str, int]]:
+    """Cuenta las filas de test con entradas idénticas a cada partición. No usa etiquetas de test."""
+    splits = pd.read_csv(
+        resolve_path(prepared_dir) / SPLITS_NAME,
+        usecols=["group_id", "split", "motivo_exclusion"],
+        keep_default_na=False,
+    )
+    partitions = {
+        "train": splits["split"] == "train",
+        "val": splits["split"] == "val",
+        "grupos_contradictorios_excluidos": splits["motivo_exclusion"] == REASON_CONTRADICTORY,
+    }
+    stats = {}
+    seen = pd.Series(False, index=test_hashes.index)
+    for name, mask in partitions.items():
+        matches = test_hashes.isin(set(splits.loc[mask, "group_id"]))
+        seen |= matches
+        stats[name] = {
+            "filas_test": int(matches.sum()),
+            "grupos": int(test_hashes[matches].nunique()),
+        }
+    stats["sin_cruce"] = {
+        "filas_test": int((~seen).sum()),
+        "grupos": int(test_hashes[~seen].nunique()),
+    }
+    return stats
+
+
+def _percent(part: int, total: int) -> str:
+    return f"{100 * part / total:.1f} %".replace(".", ",")
+
+
+def report_notes(
+    train_file: dict[str, Any],
+    test_file: dict[str, Any],
+    manifest: dict[str, Any],
+    crosses: dict[str, dict[str, int]],
+) -> list[str]:
+    """Redacta las notas para el informe con las cifras calculadas en esta auditoría."""
+    original = _percent(train_file["conteo_label"]["1"], train_file["filas"])
+    train = _percent(manifest["conteo_clases"]["train"]["1"], manifest["tamanos"]["train"])
+    test = _percent(test_file["conteo_label"]["1"], test_file["filas"])
+    in_train = _percent(crosses["train"]["filas_test"], test_file["filas"])
+    in_val = _percent(crosses["val"]["filas_test"], test_file["filas"])
+    return [
+        f"La deduplicación baja la proporción de ataques de {original} (training original) a "
+        f"{train} (train); test tiene {test}.",
+        "La política de umbral usa recall y FPR, que no dependen de la proporción de clases; la "
+        "precision sí, así que puede diferir entre validación y test.",
+        f"El {in_train} del test tiene entradas idénticas a train y el {in_val} a val; la "
+        "evaluación final reportará métricas separadas para filas vistas y no vistas.",
+    ]
 
 
 def check_content(
@@ -204,13 +260,30 @@ def build_audit(
         "duplicados": duplicates,
         "contradicciones": contradictions,
         "cruces_train_test": cross_stats(train_hashes, train_labels, test_hashes, test_labels),
-        "politica_limpieza": {
-            "estado": "borrador; se completa en la fase 3",
-            "grupos_contradictorios": "Excluir de train y validación y documentar aquí.",
-            "split": "Agrupado por hash de predictoras: ningún grupo en ambos lados.",
-            "testing": "No se limpia ni decide nada; sus cifras son solo informativas.",
-        },
+        "politica_limpieza": {"reglas": list(CLEANING_POLICY)},
     }
+
+    manifest_path = resolve_path(PREPARED_DIR) / MANIFEST_NAME
+    if manifest_path.exists():
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        audit["splits"] = {
+            "manifest": (PREPARED_DIR / MANIFEST_NAME).as_posix(),
+            "manifest_sha256": sha256_file(manifest_path),
+            "semilla": manifest["semilla"],
+            "tamanos": manifest["tamanos"],
+            "filas_eliminadas": manifest["filas_eliminadas"],
+            "conteo_clases": manifest["conteo_clases"],
+            "proporcion_clases": manifest["proporcion_clases"],
+            "huellas_split": manifest["huellas_split"],
+        }
+        audit["cruces_particiones"] = partition_cross_stats(test_hashes)
+        audit["politica_limpieza"]["notas_informe"] = report_notes(
+            train_file, test_file, manifest, audit["cruces_particiones"]
+        )
+    else:
+        checks["advertencias"].append(
+            "Falta data/prepared/manifest.json: no se calcularon splits ni cruces_particiones."
+        )
     return audit, train_hashes, train_labels
 
 

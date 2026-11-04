@@ -958,9 +958,82 @@
     "filas_sin_etiqueta_coincidente": 296
   },
   "politica_limpieza": {
-    "estado": "borrador; se completa en la fase 3",
-    "grupos_contradictorios": "Excluir de train y validación y documentar aquí.",
-    "split": "Agrupado por hash de predictoras: ningún grupo en ambos lados.",
-    "testing": "No se limpia ni decide nada; sus cifras son solo informativas."
+    "reglas": [
+      "Duplicados exactos (mismas entradas y misma etiqueta) en training: se conserva una fila por grupo; se registra cuántas se eliminaron.",
+      "Grupos contradictorios (mismas entradas, etiquetas 0 y 1): se excluyen de train y validación.",
+      "Split agrupado: GroupShuffleSplit(test_size=0.2, random_state=42) con group = hash de entradas.",
+      "El archivo de test no se modifica ni se deduplica."
+    ],
+    "notas_informe": [
+      "La deduplicación baja la proporción de ataques de 68,1 % (training original) a 48,6 % (train); test tiene 55,1 %.",
+      "La política de umbral usa recall y FPR, que no dependen de la proporción de clases; la precision sí, así que puede diferir entre validación y test.",
+      "El 8,0 % del test tiene entradas idénticas a train y el 2,1 % a val; la evaluación final reportará métricas separadas para filas vistas y no vistas."
+    ]
+  },
+  "splits": {
+    "manifest": "data/prepared/manifest.json",
+    "manifest_sha256": "6d95f322515e66352c5fd40298904697ffedc2b9e4042ee7ad5d38561786356d",
+    "semilla": 42,
+    "tamanos": {
+      "train": 80648,
+      "val": 20163,
+      "excluded": 74530,
+      "total": 175341
+    },
+    "filas_eliminadas": {
+      "duplicado_exacto": 73590,
+      "grupo_contradictorio": 940
+    },
+    "conteo_clases": {
+      "train": {
+        "0": 41417,
+        "1": 39231
+      },
+      "val": {
+        "0": 10244,
+        "1": 9919
+      },
+      "excluded": {
+        "0": 4339,
+        "1": 70191
+      }
+    },
+    "proporcion_clases": {
+      "train": {
+        "0": 0.513553,
+        "1": 0.486447
+      },
+      "val": {
+        "0": 0.508059,
+        "1": 0.491941
+      },
+      "excluded": {
+        "0": 0.058218,
+        "1": 0.941782
+      }
+    },
+    "huellas_split": {
+      "train": "a93d63fda7b77a82d7a82a63bbb3deb495608b1f672386ae9c4148c0579d6e9e",
+      "val": "ed55f65bf98f2f89571a54891f288ced419744799f19138b16f5ea048df0510c",
+      "excluded": "cf0765b748ee3388aef0184feab0fc73bd7d1cd79f9bb6195fd87426baa9d9f4"
+    }
+  },
+  "cruces_particiones": {
+    "train": {
+      "filas_test": 6600,
+      "grupos": 960
+    },
+    "val": {
+      "filas_test": 1713,
+      "grupos": 244
+    },
+    "grupos_contradictorios_excluidos": {
+      "filas_test": 228,
+      "grupos": 98
+    },
+    "sin_cruce": {
+      "filas_test": 73791,
+      "grupos": 52644
+    }
   }
 }

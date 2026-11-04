@@ -1,0 +1,27 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python -m dsrv.prepare
+    deps:
+    - path: data/raw/UNSW_NB15_training-set.csv
+      hash: md5
+      md5: e55caabaa6cd4a8f1c06a227bcfababc
+      size: 32293018
+    - path: src/dsrv/config.py
+      hash: md5
+      md5: af0c3af891af2d85a5b52035b1c2249b
+      size: 1089
+    - path: src/dsrv/hashing.py
+      hash: md5
+      md5: a15cca778de5ed0fb2679b3d7e4ec294
+      size: 2339
+    - path: src/dsrv/prepare.py
+      hash: md5
+      md5: 2e9f705b87fbdcd13ba3eed280f21e31
+      size: 7611
+    outs:
+    - path: data/prepared
+      hash: md5
+      md5: a4d99e14f765b0fe150ba077ca815bd5.dir
+      size: 34883955
+      nfiles: 4
