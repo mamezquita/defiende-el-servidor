@@ -1,5 +1,5 @@
 {
-  "estado": "publicada",
+  "estado": "congelada",
   "politica": "configs/threshold_policy.yaml",
   "conjunto_de_seleccion": "validacion",
   "versiones": [
@@ -30,7 +30,11 @@
       "razon_seleccion": "Referencia fijada de antemano: e1_lr_base con umbral 0.5.",
       "hf_repo": "MiguelAngelAB/unsw-nb15-defiende-servidor",
       "hf_sha": "6010585cc8729c73d88d5b0d9acb360e0065a351",
-      "model_sha256": "2a968766d5e661ebfe05b174370c5272fc99bdd0befeafc4d17cdc2e365d98ab"
+      "model_sha256": "2a968766d5e661ebfe05b174370c5272fc99bdd0befeafc4d17cdc2e365d98ab",
+      "git_tag": "v1",
+      "git_tag_commit": "7750fe4d1bf98560829d1ab4c270e94ef2d61764",
+      "dvc_tag": "data-v2",
+      "hf_tag": "v1"
     },
     {
       "version": "v2",
@@ -78,7 +82,11 @@
       "errores_aceptados": [
         "957 ataques no detectados en validación (9.65% de los ataques): pasan como tráfico normal.",
         "499 falsas alarmas en validación (4.87% del tráfico normal): conexiones normales marcadas como ataque."
-      ]
+      ],
+      "git_tag": "v2",
+      "git_tag_commit": "c99821bcf2f2aa465f5b40cf0f4afc3329dcb877",
+      "dvc_tag": "data-v2",
+      "hf_tag": "v2"
     }
   ]
 }
