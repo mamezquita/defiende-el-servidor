@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.egg-info/
+mlruns/
+mlartifacts/
+models/
+hf_staging/
+*.zip
+.dvc/cache
+.dvc/config.local
