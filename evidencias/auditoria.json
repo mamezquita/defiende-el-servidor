@@ -1,0 +1,966 @@
+{
+  "fuentes": {
+    "url_origen": "https://unsw-my.sharepoint.com/personal/z5025758_ad_unsw_edu_au/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fz5025758%5Fad%5Funsw%5Fedu%5Fau%2FDocuments%2FUNSW%2DNB15%20dataset%2FCSV%20Files%2FTraining%20and%20Testing%20Sets&viewid=f8d1dec5%2Dcd5f%2D42ae%2D8b06%2D2fece580c74a&ga=1",
+    "url_atribucion": "https://research.unsw.edu.au/projects/unsw-nb15-dataset",
+    "fecha_descarga": "2026-11-03"
+  },
+  "archivos": {
+    "training": {
+      "ruta": "data/raw/UNSW_NB15_training-set.csv",
+      "sha256": "bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa",
+      "sha256_esperado": "bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa",
+      "sha256_coincide": true,
+      "tamano_bytes": 32293018,
+      "filas": 175341,
+      "filas_esperadas": 175341,
+      "filas_coinciden": true,
+      "columnas": 45,
+      "esquema": [
+        {
+          "nombre": "id",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "dur",
+          "dtype": "float64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "proto",
+          "dtype": "str",
+          "faltantes": 0
+        },
+        {
+          "nombre": "service",
+          "dtype": "str",
+          "faltantes": 0
+        },
+        {
+          "nombre": "state",
+          "dtype": "str",
+          "faltantes": 0
+        },
+        {
+          "nombre": "spkts",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "dpkts",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "sbytes",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "dbytes",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "rate",
+          "dtype": "float64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "sttl",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "dttl",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "sload",
+          "dtype": "float64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "dload",
+          "dtype": "float64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "sloss",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "dloss",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "sinpkt",
+          "dtype": "float64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "dinpkt",
+          "dtype": "float64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "sjit",
+          "dtype": "float64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "djit",
+          "dtype": "float64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "swin",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "stcpb",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "dtcpb",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "dwin",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "tcprtt",
+          "dtype": "float64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "synack",
+          "dtype": "float64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "ackdat",
+          "dtype": "float64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "smean",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "dmean",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "trans_depth",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "response_body_len",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "ct_srv_src",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "ct_state_ttl",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "ct_dst_ltm",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "ct_src_dport_ltm",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "ct_dst_sport_ltm",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "ct_dst_src_ltm",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "is_ftp_login",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "ct_ftp_cmd",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "ct_flw_http_mthd",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "ct_src_ltm",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "ct_srv_dst",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "is_sm_ips_ports",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "attack_cat",
+          "dtype": "str",
+          "faltantes": 0
+        },
+        {
+          "nombre": "label",
+          "dtype": "int64",
+          "faltantes": 0
+        }
+      ],
+      "conteo_label": {
+        "0": 56000,
+        "1": 119341
+      },
+      "conteo_attack_cat": {
+        "Analysis": 2000,
+        "Backdoor": 1746,
+        "DoS": 12264,
+        "Exploits": 33393,
+        "Fuzzers": 18184,
+        "Generic": 40000,
+        "Normal": 56000,
+        "Reconnaissance": 10491,
+        "Shellcode": 1133,
+        "Worms": 130
+      },
+      "categorias": {
+        "proto": {
+          "3pc": 100,
+          "a/n": 100,
+          "aes-sp3-d": 100,
+          "any": 300,
+          "argus": 98,
+          "aris": 100,
+          "arp": 2859,
+          "ax.25": 100,
+          "bbn-rcc": 98,
+          "bna": 100,
+          "br-sat-mon": 100,
+          "cbt": 99,
+          "cftp": 100,
+          "chaos": 99,
+          "compaq-peer": 100,
+          "cphb": 100,
+          "cpnx": 100,
+          "crtp": 99,
+          "crudp": 100,
+          "dcn": 99,
+          "ddp": 100,
+          "ddx": 100,
+          "dgp": 100,
+          "egp": 98,
+          "eigrp": 100,
+          "emcon": 99,
+          "encap": 100,
+          "etherip": 100,
+          "fc": 100,
+          "fire": 100,
+          "ggp": 99,
+          "gmtp": 100,
+          "gre": 225,
+          "hmp": 98,
+          "i-nlsp": 100,
+          "iatp": 100,
+          "ib": 101,
+          "icmp": 15,
+          "idpr": 100,
+          "idpr-cmtp": 100,
+          "idrp": 100,
+          "ifmp": 100,
+          "igmp": 18,
+          "igp": 99,
+          "il": 100,
+          "ip": 99,
+          "ipcomp": 100,
+          "ipcv": 100,
+          "ipip": 100,
+          "iplt": 100,
+          "ipnip": 99,
+          "ippc": 100,
+          "ipv6": 201,
+          "ipv6-frag": 100,
+          "ipv6-no": 100,
+          "ipv6-opts": 100,
+          "ipv6-route": 100,
+          "ipx-n-ip": 100,
+          "irtp": 99,
+          "isis": 100,
+          "iso-ip": 100,
+          "iso-tp4": 99,
+          "kryptolan": 100,
+          "l2tp": 100,
+          "larp": 100,
+          "leaf-1": 99,
+          "leaf-2": 99,
+          "merit-inp": 100,
+          "mfe-nsp": 100,
+          "mhrp": 100,
+          "micp": 100,
+          "mobile": 201,
+          "mtp": 100,
+          "mux": 99,
+          "narp": 100,
+          "netblt": 98,
+          "nsfnet-igp": 100,
+          "nvp": 99,
+          "ospf": 2595,
+          "pgm": 100,
+          "pim": 201,
+          "pipe": 100,
+          "pnni": 100,
+          "pri-enc": 100,
+          "prm": 99,
+          "ptp": 100,
+          "pup": 99,
+          "pvp": 100,
+          "qnx": 100,
+          "rdp": 98,
+          "rsvp": 200,
+          "rtp": 1,
+          "rvd": 100,
+          "sat-expak": 100,
+          "sat-mon": 100,
+          "sccopmce": 100,
+          "scps": 100,
+          "sctp": 1150,
+          "sdrp": 100,
+          "secure-vmtp": 100,
+          "sep": 193,
+          "skip": 100,
+          "sm": 100,
+          "smp": 100,
+          "snp": 100,
+          "sprite-rpc": 100,
+          "sps": 100,
+          "srp": 100,
+          "st2": 99,
+          "stp": 100,
+          "sun-nd": 201,
+          "swipe": 201,
+          "tcf": 100,
+          "tcp": 79946,
+          "tlsp": 100,
+          "tp++": 100,
+          "trunk-1": 99,
+          "trunk-2": 99,
+          "ttp": 100,
+          "udp": 63283,
+          "unas": 12084,
+          "uti": 100,
+          "vines": 100,
+          "visa": 100,
+          "vmtp": 100,
+          "vrrp": 100,
+          "wb-expak": 100,
+          "wb-mon": 100,
+          "wsn": 100,
+          "xnet": 99,
+          "xns-idp": 99,
+          "xtp": 100,
+          "zero": 100
+        },
+        "service": {
+          "-": 94168,
+          "dhcp": 94,
+          "dns": 47294,
+          "ftp": 3428,
+          "ftp-data": 3995,
+          "http": 18724,
+          "irc": 25,
+          "pop3": 1105,
+          "radius": 12,
+          "smtp": 5058,
+          "snmp": 80,
+          "ssh": 1302,
+          "ssl": 56
+        },
+        "state": {
+          "CON": 13152,
+          "ECO": 12,
+          "FIN": 77825,
+          "INT": 82275,
+          "PAR": 1,
+          "REQ": 1991,
+          "RST": 83,
+          "URN": 1,
+          "no": 1
+        }
+      }
+    },
+    "testing": {
+      "ruta": "data/raw/UNSW_NB15_testing-set.csv",
+      "sha256": "734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559",
+      "sha256_esperado": "734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559",
+      "sha256_coincide": true,
+      "tamano_bytes": 15380800,
+      "filas": 82332,
+      "filas_esperadas": 82332,
+      "filas_coinciden": true,
+      "columnas": 45,
+      "esquema": [
+        {
+          "nombre": "id",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "dur",
+          "dtype": "float64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "proto",
+          "dtype": "str",
+          "faltantes": 0
+        },
+        {
+          "nombre": "service",
+          "dtype": "str",
+          "faltantes": 0
+        },
+        {
+          "nombre": "state",
+          "dtype": "str",
+          "faltantes": 0
+        },
+        {
+          "nombre": "spkts",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "dpkts",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "sbytes",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "dbytes",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "rate",
+          "dtype": "float64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "sttl",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "dttl",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "sload",
+          "dtype": "float64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "dload",
+          "dtype": "float64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "sloss",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "dloss",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "sinpkt",
+          "dtype": "float64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "dinpkt",
+          "dtype": "float64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "sjit",
+          "dtype": "float64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "djit",
+          "dtype": "float64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "swin",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "stcpb",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "dtcpb",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "dwin",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "tcprtt",
+          "dtype": "float64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "synack",
+          "dtype": "float64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "ackdat",
+          "dtype": "float64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "smean",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "dmean",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "trans_depth",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "response_body_len",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "ct_srv_src",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "ct_state_ttl",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "ct_dst_ltm",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "ct_src_dport_ltm",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "ct_dst_sport_ltm",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "ct_dst_src_ltm",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "is_ftp_login",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "ct_ftp_cmd",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "ct_flw_http_mthd",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "ct_src_ltm",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "ct_srv_dst",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "is_sm_ips_ports",
+          "dtype": "int64",
+          "faltantes": 0
+        },
+        {
+          "nombre": "attack_cat",
+          "dtype": "str",
+          "faltantes": 0
+        },
+        {
+          "nombre": "label",
+          "dtype": "int64",
+          "faltantes": 0
+        }
+      ],
+      "conteo_label": {
+        "0": 37000,
+        "1": 45332
+      },
+      "conteo_attack_cat": {
+        "Analysis": 677,
+        "Backdoor": 583,
+        "DoS": 4089,
+        "Exploits": 11132,
+        "Fuzzers": 6062,
+        "Generic": 18871,
+        "Normal": 37000,
+        "Reconnaissance": 3496,
+        "Shellcode": 378,
+        "Worms": 44
+      },
+      "categorias": {
+        "proto": {
+          "3pc": 32,
+          "a/n": 32,
+          "aes-sp3-d": 32,
+          "any": 96,
+          "argus": 33,
+          "aris": 32,
+          "arp": 987,
+          "ax.25": 32,
+          "bbn-rcc": 34,
+          "bna": 32,
+          "br-sat-mon": 32,
+          "cbt": 33,
+          "cftp": 32,
+          "chaos": 33,
+          "compaq-peer": 32,
+          "cphb": 32,
+          "cpnx": 32,
+          "crtp": 32,
+          "crudp": 32,
+          "dcn": 33,
+          "ddp": 32,
+          "ddx": 32,
+          "dgp": 32,
+          "egp": 33,
+          "eigrp": 32,
+          "emcon": 33,
+          "encap": 32,
+          "etherip": 32,
+          "fc": 32,
+          "fire": 32,
+          "ggp": 33,
+          "gmtp": 32,
+          "gre": 88,
+          "hmp": 33,
+          "i-nlsp": 32,
+          "iatp": 32,
+          "ib": 31,
+          "idpr": 32,
+          "idpr-cmtp": 32,
+          "idrp": 32,
+          "ifmp": 32,
+          "igmp": 30,
+          "igp": 33,
+          "il": 32,
+          "ip": 33,
+          "ipcomp": 32,
+          "ipcv": 32,
+          "ipip": 32,
+          "iplt": 32,
+          "ipnip": 33,
+          "ippc": 32,
+          "ipv6": 61,
+          "ipv6-frag": 32,
+          "ipv6-no": 32,
+          "ipv6-opts": 32,
+          "ipv6-route": 32,
+          "ipx-n-ip": 32,
+          "irtp": 33,
+          "isis": 32,
+          "iso-ip": 32,
+          "iso-tp4": 33,
+          "kryptolan": 32,
+          "l2tp": 32,
+          "larp": 32,
+          "leaf-1": 34,
+          "leaf-2": 33,
+          "merit-inp": 32,
+          "mfe-nsp": 32,
+          "mhrp": 32,
+          "micp": 32,
+          "mobile": 52,
+          "mtp": 32,
+          "mux": 33,
+          "narp": 32,
+          "netblt": 33,
+          "nsfnet-igp": 32,
+          "nvp": 33,
+          "ospf": 676,
+          "pgm": 32,
+          "pim": 52,
+          "pipe": 32,
+          "pnni": 32,
+          "pri-enc": 32,
+          "prm": 34,
+          "ptp": 32,
+          "pup": 33,
+          "pvp": 32,
+          "qnx": 32,
+          "rdp": 33,
+          "rsvp": 64,
+          "rvd": 32,
+          "sat-expak": 32,
+          "sat-mon": 32,
+          "sccopmce": 32,
+          "scps": 32,
+          "sctp": 324,
+          "sdrp": 32,
+          "secure-vmtp": 32,
+          "sep": 58,
+          "skip": 32,
+          "sm": 32,
+          "smp": 32,
+          "snp": 32,
+          "sprite-rpc": 32,
+          "sps": 32,
+          "srp": 32,
+          "st2": 33,
+          "stp": 32,
+          "sun-nd": 54,
+          "swipe": 52,
+          "tcf": 32,
+          "tcp": 43095,
+          "tlsp": 32,
+          "tp++": 32,
+          "trunk-1": 33,
+          "trunk-2": 33,
+          "ttp": 32,
+          "udp": 29418,
+          "unas": 3515,
+          "uti": 32,
+          "vines": 32,
+          "visa": 32,
+          "vmtp": 32,
+          "vrrp": 32,
+          "wb-expak": 32,
+          "wb-mon": 32,
+          "wsn": 32,
+          "xnet": 33,
+          "xns-idp": 34,
+          "xtp": 32,
+          "zero": 32
+        },
+        "service": {
+          "-": 47153,
+          "dhcp": 26,
+          "dns": 21367,
+          "ftp": 1552,
+          "ftp-data": 1396,
+          "http": 8287,
+          "irc": 5,
+          "pop3": 423,
+          "radius": 9,
+          "smtp": 1851,
+          "snmp": 29,
+          "ssh": 204,
+          "ssl": 30
+        },
+        "state": {
+          "ACC": 4,
+          "CLO": 1,
+          "CON": 6982,
+          "FIN": 39339,
+          "INT": 34163,
+          "REQ": 1842,
+          "RST": 1
+        }
+      }
+    }
+  },
+  "comprobaciones": {
+    "mismas_columnas": true,
+    "columnas_con_dtype_distinto": [],
+    "posible_inversion_train_test": false,
+    "advertencias": []
+  },
+  "variables": {
+    "objetivo": "label",
+    "clase_positiva": 1,
+    "usadas": [
+      "dur",
+      "proto",
+      "service",
+      "state",
+      "spkts",
+      "dpkts",
+      "sbytes",
+      "dbytes",
+      "rate",
+      "sttl",
+      "dttl",
+      "sload",
+      "dload",
+      "sloss",
+      "dloss",
+      "sinpkt",
+      "dinpkt",
+      "sjit",
+      "djit",
+      "swin",
+      "stcpb",
+      "dtcpb",
+      "dwin",
+      "tcprtt",
+      "synack",
+      "ackdat",
+      "smean",
+      "dmean",
+      "trans_depth",
+      "response_body_len",
+      "ct_srv_src",
+      "ct_state_ttl",
+      "ct_dst_ltm",
+      "ct_src_dport_ltm",
+      "ct_dst_sport_ltm",
+      "ct_dst_src_ltm",
+      "is_ftp_login",
+      "ct_ftp_cmd",
+      "ct_flw_http_mthd",
+      "ct_src_ltm",
+      "ct_srv_dst",
+      "is_sm_ips_ports"
+    ],
+    "excluidas": [
+      {
+        "nombre": "label",
+        "motivo": "Variable objetivo."
+      },
+      {
+        "nombre": "attack_cat",
+        "motivo": "Fuga de información: describe el tipo de ataque, es decir, el objetivo."
+      },
+      {
+        "nombre": "id",
+        "motivo": "Identificador de fila sin información de la conexión."
+      }
+    ]
+  },
+  "duplicados": {
+    "training": {
+      "filas": 175341,
+      "grupos_distintos": 101040,
+      "filas_duplicadas_sobrantes": 74301,
+      "filas_en_grupos_repetidos": 84049,
+      "grupos_con_mas_de_una_fila": 9748,
+      "tamano_maximo_grupo": 415
+    },
+    "testing": {
+      "filas": 82332,
+      "grupos_distintos": 53946,
+      "filas_duplicadas_sobrantes": 28386,
+      "filas_en_grupos_repetidos": 34704,
+      "grupos_con_mas_de_una_fila": 6318,
+      "tamano_maximo_grupo": 88
+    },
+    "union": {
+      "filas": 257673,
+      "grupos_distintos": 153684,
+      "filas_duplicadas_sobrantes": 103989,
+      "filas_en_grupos_repetidos": 119701,
+      "grupos_con_mas_de_una_fila": 15712,
+      "tamano_maximo_grupo": 483
+    },
+    "feature_hash_train": {
+      "ruta": "evidencias/feature_hash_train.csv",
+      "guardado": false,
+      "tamano_bytes": 11747866,
+      "limite_bytes": 5242880
+    }
+  },
+  "contradicciones": {
+    "training": {
+      "grupos": 229,
+      "filas": 940
+    },
+    "testing": {
+      "grupos": 6,
+      "filas": 14
+    },
+    "union": {
+      "grupos": 414,
+      "filas": 1758
+    }
+  },
+  "cruces_train_test": {
+    "filas_testing_en_training": 8541,
+    "grupos_en_comun": 1302,
+    "filas_con_alguna_etiqueta_distinta": 524,
+    "grupos_con_alguna_etiqueta_distinta": 279,
+    "filas_sin_etiqueta_coincidente": 296
+  },
+  "politica_limpieza": {
+    "estado": "borrador; se completa en la fase 3",
+    "grupos_contradictorios": "Excluir de train y validación y documentar aquí.",
+    "split": "Agrupado por hash de predictoras: ningún grupo en ambos lados.",
+    "testing": "No se limpia ni decide nada; sus cifras son solo informativas."
+  }
+}

@@ -8,3 +8,4 @@ hf_staging/
 *.zip
 .dvc/cache
 .dvc/config.local
+*:Zone.Identifier
