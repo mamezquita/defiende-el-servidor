@@ -1,0 +1,16 @@
+config_id: e3_rf
+family: random_forest
+hypothesis: "Las interacciones no lineales entre variables de flujo reducen los falsos negativos."
+change: "Sustituye la regresión logística de E2 por RandomForest, con OrdinalEncoder y sin log1p, escalado ni class_weight."
+seed: 42
+preprocessing:
+  categorical_encoder: ordinal
+  log1p: false
+  scale: false
+model:
+  class: RandomForestClassifier
+  params:
+    n_estimators: 200
+    min_samples_leaf: 2
+    n_jobs: -1
+threshold: 0.5

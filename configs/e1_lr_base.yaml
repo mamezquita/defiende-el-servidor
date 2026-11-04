@@ -1,0 +1,15 @@
+config_id: e1_lr_base
+family: linear
+hypothesis: "Una referencia lineal simple separa la mayoría de ataques."
+change: "Línea base: primera configuración."
+seed: 42
+preprocessing:
+  categorical_encoder: onehot
+  log1p: false
+  scale: true
+model:
+  class: LogisticRegression
+  params:
+    C: 1.0
+    max_iter: 2000
+threshold: 0.5

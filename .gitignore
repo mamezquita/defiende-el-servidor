@@ -9,3 +9,5 @@ hf_staging/
 .dvc/cache
 .dvc/config.local
 *:Zone.Identifier
+mlflow.db
+.pytest_cache/
