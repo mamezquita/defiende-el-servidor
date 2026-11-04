@@ -184,54 +184,58 @@ def run_training(config_path: str | Path) -> str:
     X_train, y_train = train[features], train[TARGET_COLUMN]
     X_val, y_val = val[features], val[TARGET_COLUMN]
 
-    pipeline = build_pipeline(config, X_train)
-    start = time.perf_counter()
-    pipeline.fit(X_train, y_train)
-    train_seconds = time.perf_counter() - start
-    use_single_thread_inference(pipeline)
-
-    # Un solo hilo en todos los modelos, para que el tiempo de inferencia sea comparable.
-    with threadpool_limits(limits=1):
-        start = time.perf_counter()
-        score = _score_attack(pipeline, X_val)
-        predict_seconds = time.perf_counter() - start
-
-    metrics = compute_metrics(y_val, predict_at_threshold(score, config["threshold"]))
-
     mlflow.set_tracking_uri(TRACKING_URI)
     if mlflow.get_experiment_by_name(EXPERIMENT_NAME) is None:
         mlflow.create_experiment(EXPERIMENT_NAME, artifact_location=ARTIFACT_LOCATION)
     mlflow.set_experiment(EXPERIMENT_NAME)
 
     with mlflow.start_run(run_name=config["config_id"]) as run:
-        mlflow.set_tags(
-            {
-                "hypothesis": config["hypothesis"],
-                "change": config["change"],
-                "family": config["family"],
-                "config_id": config["config_id"],
-                "git_commit": git_commit,
-                "data_version": data_version,
-                "seed": config["seed"],
-            }
-        )
-        mlflow.log_params(flatten_config(config))
-        mlflow.log_metrics(
-            {
-                **{name: metrics[name] for name in METRIC_NAMES},
-                "train_seconds": train_seconds,
-                "val_predict_seconds": predict_seconds,
-                "zero_division": float(any(metrics["zero_division"].values())),
-            }
-        )
-        with tempfile.TemporaryDirectory() as tmp:
-            model_path = _log_results(
-                config, config_path, pipeline, val, X_val, score, metrics, Path(tmp)
+        try:
+            mlflow.set_tags(
+                {
+                    "hypothesis": config["hypothesis"],
+                    "change": config["change"],
+                    "family": config["family"],
+                    "config_id": config["config_id"],
+                    "git_commit": git_commit,
+                    "data_version": data_version,
+                    "seed": config["seed"],
+                }
             )
-            model_dir = resolve_path(MODELS_DIR) / config["config_id"]
-            model_dir.mkdir(parents=True, exist_ok=True)
-            shutil.copy2(model_path, model_dir / "model.joblib")
-            (model_dir / "run_id.txt").write_text(run.info.run_id + "\n", encoding="utf-8")
+            mlflow.log_params(flatten_config(config))
+
+            pipeline = build_pipeline(config, X_train)
+            start = time.perf_counter()
+            pipeline.fit(X_train, y_train)
+            train_seconds = time.perf_counter() - start
+            use_single_thread_inference(pipeline)
+
+            # Un solo hilo en todos los modelos, para que el tiempo de inferencia sea comparable.
+            with threadpool_limits(limits=1):
+                start = time.perf_counter()
+                score = _score_attack(pipeline, X_val)
+                predict_seconds = time.perf_counter() - start
+
+            metrics = compute_metrics(y_val, predict_at_threshold(score, config["threshold"]))
+            mlflow.log_metrics(
+                {
+                    **{name: metrics[name] for name in METRIC_NAMES},
+                    "train_seconds": train_seconds,
+                    "val_predict_seconds": predict_seconds,
+                    "zero_division": float(any(metrics["zero_division"].values())),
+                }
+            )
+            with tempfile.TemporaryDirectory() as tmp:
+                model_path = _log_results(
+                    config, config_path, pipeline, val, X_val, score, metrics, Path(tmp)
+                )
+                model_dir = resolve_path(MODELS_DIR) / config["config_id"]
+                model_dir.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(model_path, model_dir / "model.joblib")
+                (model_dir / "run_id.txt").write_text(run.info.run_id + "\n", encoding="utf-8")
+        except Exception:
+            mlflow.set_tag("status", "failed")
+            raise
         return run.info.run_id
 
 
