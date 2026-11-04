@@ -11,7 +11,7 @@ from typing import Any
 
 from huggingface_hub import HfApi, hf_hub_download
 
-from dsrv.config import resolve_path
+from dsrv.config import load_yaml, resolve_path
 from dsrv.evaluate_test import EVALUATED_VERSION, METRICS_JSON
 from dsrv.hashing import sha256_file
 from dsrv.package_model import (
@@ -31,6 +31,7 @@ from dsrv.publish_hf import (
     _read_json,
     _write_json,
 )
+from dsrv.select import POLICY_PATH
 
 SECTION_TITLE = "## Evaluación final en test"
 PENDING_NOTICE = (
@@ -53,7 +54,18 @@ def _group_row(label: str, group: dict[str, Any]) -> str:
     )
 
 
-def build_section(report: dict[str, Any], validation: dict[str, Any]) -> str:
+def _limit_notice(report: dict[str, Any], limit: float) -> str:
+    """Avisa de forma explícita si la FPR de test supera el límite de la política."""
+    if report["fpr"] <= limit:
+        return ""
+    return (
+        f"**La FPR en test ({_number(100 * report['fpr'], 2)} %) supera el límite de "
+        f"{_number(100 * limit, 0)} % con el que se eligió el umbral en validación.** No se cambió "
+        "ni el modelo ni el umbral. Las causas medidas están en `evidencias/notas-test.md`.\n\n"
+    )
+
+
+def build_section(report: dict[str, Any], validation: dict[str, Any], limit: float) -> str:
     """Redacta la sección de test con las cifras de metricas-test.json."""
     matrix = report["matriz_confusion"]
     groups = report["descriptivo_filas_vistas"]
@@ -64,7 +76,7 @@ deduplicar ni filtrar), hecha después de congelar la selección con el tag
 [`{report['freeze_tag']}`]({GITHUB_REPO}/tree/{report['freeze_tag']}). El test no se usó para elegir
 el modelo ni el umbral, y nada cambió después de ver estos resultados.
 
-- **Revisión evaluada:** `{report['hf_sha']}`
+{_limit_notice(report, limit)}- **Revisión evaluada:** `{report['hf_sha']}`
 - **SHA-256 del modelo:** `{report['model_sha256']}`
 - **SHA-256 del archivo de test:** `{report['dataset_sha256']}`
 - **Umbral:** {_number(report['umbral'], 2)}
@@ -131,7 +143,8 @@ def publish_test_section(
         config = json.loads(Path(config_path).read_text(encoding="utf-8"))
     validation = config["validation_metrics"]
 
-    updated = update_card(card, build_section(report, validation))
+    limit = load_yaml(POLICY_PATH)["restriccion"]["maximo"]
+    updated = update_card(card, build_section(report, validation, limit))
     content = updated.encode("utf-8")
     if FORBIDDEN_CONTENT.search(content):
         raise PublishError("la model card contiene un posible secreto o una ruta personal")

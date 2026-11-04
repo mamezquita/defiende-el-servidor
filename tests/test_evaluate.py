@@ -12,6 +12,7 @@ import pandas as pd
 import pytest
 import sklearn
 
+from dsrv import describe_test_shift as shift
 from dsrv import document_test_hf as doc
 from dsrv import evaluate_test as ev
 from dsrv import recompute_metrics as rc
@@ -400,7 +401,7 @@ VALIDATION = {
 
 
 def test_card_section_cites_evaluated_revision_and_model():
-    section = doc.build_section(report_for_card(), VALIDATION)
+    section = doc.build_section(report_for_card(), VALIDATION, 0.05)
 
     assert SHA_EVALUATED in section
     assert "s" * 64 in section
@@ -408,7 +409,7 @@ def test_card_section_cites_evaluated_revision_and_model():
 
 
 def test_update_card_replaces_notice_and_keeps_the_rest():
-    updated = doc.update_card(CARD, doc.build_section(report_for_card(), VALIDATION))
+    updated = doc.update_card(CARD, doc.build_section(report_for_card(), VALIDATION, 0.05))
 
     assert doc.PENDING_NOTICE not in updated
     assert doc.PUBLISHED_NOTICE in updated
@@ -503,3 +504,58 @@ def test_second_documentation_is_rejected(doc_workspace):
     with pytest.raises(PublishError, match="ya está registrada"):
         doc.publish_test_section(api=api, download=doc_workspace.download)
     assert len(api.uploads) == 1
+
+
+def test_card_states_when_fpr_exceeds_the_limit():
+    exceeded = doc.build_section(report_for_card(), VALIDATION, 0.05)
+    within = doc.build_section({**report_for_card(), "fpr": 0.05}, VALIDATION, 0.05)
+
+    assert "supera el límite" in exceeded
+    assert "6,00 %" in exceeded
+    assert "supera el límite" not in within
+
+
+def test_ks_statistic_matches_scipy():
+    from scipy.stats import ks_2samp
+
+    rng = np.random.default_rng(0)
+    first, second = rng.normal(size=400), rng.normal(0.3, size=300)
+    discrete_a, discrete_b = rng.integers(0, 5, 200), rng.integers(1, 6, 100)
+
+    assert shift.ks_statistic(first, second) == pytest.approx(ks_2samp(first, second).statistic)
+    assert shift.ks_statistic(discrete_a, discrete_b) == pytest.approx(
+        ks_2samp(discrete_a, discrete_b).statistic
+    )
+    assert shift.ks_statistic(first, first) == 0
+
+
+def test_total_variation_bounds():
+    same = pd.Series(["a", "b"])
+
+    assert shift.total_variation(same, same) == 0
+    assert shift.total_variation(pd.Series(["a"]), pd.Series(["b"])) == 1
+    assert shift.total_variation(pd.Series(["a", "b"]), pd.Series(["a", "a"])) == 0.5
+
+
+def test_describe_counts_duplicates_by_class_and_never_changes_inputs():
+    train = make_frame(seed=1)
+    val = make_frame(seed=2)
+    test = make_frame(seed=3)
+    test = pd.concat([test, test[test["label"] == 1].head(4)], ignore_index=True)
+    test["y_pred"] = test["label"]
+    before = test.copy()
+
+    result = shift.describe(train, val, test, FEATURES)
+
+    pd.testing.assert_frame_equal(test, before)
+    assert result["duplicados_en_test"]["filas_sobrantes"] >= 4
+    assert result["metricas_test_completo"]["filas"] == 104
+    assert result["metricas_test_filas_unicas"]["filas"] <= 100
+    assert "no se usó para decidir" in result["nota"]
+
+
+def test_shift_analysis_requires_a_finished_evaluation(monkeypatch, tmp_path):
+    monkeypatch.setattr(shift, "METRICS_JSON", tmp_path / "no_existe.json")
+
+    with pytest.raises(RuntimeError, match="después de la evaluación"):
+        shift.main()

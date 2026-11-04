@@ -43,7 +43,11 @@
       "git_tag": "v2",
       "git_tag_commit": "c99821bcf2f2aa465f5b40cf0f4afc3329dcb877",
       "data_version": "data-v2|UNSW_NB15_testing-set.csv=e0beea40262e46168cdb81476dbc27b4|UNSW_NB15_training-set.csv=e55caabaa6cd4a8f1c06a227bcfababc|data/prepared=a4d99e14f765b0fe150ba077ca815bd5.dir",
-      "mlflow_run_id": "f2f0d4442fcd4aa28f4730c8eb2bc9d5"
+      "mlflow_run_id": "f2f0d4442fcd4aa28f4730c8eb2bc9d5",
+      "revision_evaluada": "d0375af37f9abf49930b4ec76b7430446098f1f9",
+      "revision_documentacion": "43e4338dfb83671ccbadc0ad72901387ea3b9560",
+      "revision_documentacion_url": "https://huggingface.co/MiguelAngelAB/unsw-nb15-defiende-servidor/commit/43e4338dfb83671ccbadc0ad72901387ea3b9560",
+      "modelo_identico_en_documentacion": true
     }
   }
 }

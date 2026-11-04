@@ -1,0 +1,147 @@
+{
+  "version": "v2",
+  "hf_repo": "MiguelAngelAB/unsw-nb15-defiende-servidor",
+  "hf_sha": "d0375af37f9abf49930b4ec76b7430446098f1f9",
+  "model_sha256": "186e9c50ef5634a2135f299a555de16f0e1f76de7c5c8bbb8f43e2c1c908014f",
+  "dataset_sha256": "734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559",
+  "filas_evaluadas": 82332,
+  "umbral": 0.64,
+  "clase_positiva": {
+    "label": 1,
+    "name": "ataque"
+  },
+  "regla_decision": "y_pred = 1 si score_attack >= threshold",
+  "recall_attack": 0.9699329392040943,
+  "precision_attack": 0.863406971035837,
+  "fpr": 0.188,
+  "macro_f1": 0.8959823775510924,
+  "accuracy": 0.8989578778603702,
+  "matriz_confusion": [
+    [
+      30044,
+      6956
+    ],
+    [
+      1363,
+      43969
+    ]
+  ],
+  "orden_matriz": "[[TN, FP], [FN, TP]]",
+  "zero_division": {
+    "recall_attack": false,
+    "precision_attack": false,
+    "fpr": false,
+    "macro_f1": false,
+    "accuracy": false
+  },
+  "git_commit": "ad15405743a0ebd36e4c824e70946209f33743b2",
+  "freeze_tag": "freeze-v2",
+  "fecha": "2026-11-04T17:46:29+00:00",
+  "descriptivo_filas_vistas": {
+    "nota": "Solo descriptivo: estas cifras no se usaron para decidir nada.",
+    "vistas_en_train_o_val": {
+      "filas": 8313,
+      "recall_attack": 0.9983010052385671,
+      "precision_attack": 0.9665524331734064,
+      "fpr": 0.1952,
+      "macro_f1": 0.9346477195759826,
+      "accuracy": 0.9692048598580536,
+      "matriz_confusion": [
+        [
+          1006,
+          244
+        ],
+        [
+          12,
+          7051
+        ]
+      ],
+      "orden_matriz": "[[TN, FP], [FN, TP]]",
+      "zero_division": {
+        "recall_attack": false,
+        "precision_attack": false,
+        "fpr": false,
+        "macro_f1": false,
+        "accuracy": false
+      }
+    },
+    "vistas_en_train": {
+      "filas": 6600,
+      "recall_attack": 0.9982165150704476,
+      "precision_attack": 0.9636707988980716,
+      "fpr": 0.21248741188318226,
+      "macro_f1": 0.9284149928039547,
+      "accuracy": 0.9665151515151515,
+      "matriz_confusion": [
+        [
+          782,
+          211
+        ],
+        [
+          10,
+          5597
+        ]
+      ],
+      "orden_matriz": "[[TN, FP], [FN, TP]]",
+      "zero_division": {
+        "recall_attack": false,
+        "precision_attack": false,
+        "fpr": false,
+        "macro_f1": false,
+        "accuracy": false
+      }
+    },
+    "vistas_en_val": {
+      "filas": 1713,
+      "recall_attack": 0.9986263736263736,
+      "precision_attack": 0.9778076664425017,
+      "fpr": 0.12840466926070038,
+      "macro_f1": 0.9578218026562662,
+      "accuracy": 0.9795680093403386,
+      "matriz_confusion": [
+        [
+          224,
+          33
+        ],
+        [
+          2,
+          1454
+        ]
+      ],
+      "orden_matriz": "[[TN, FP], [FN, TP]]",
+      "zero_division": {
+        "recall_attack": false,
+        "precision_attack": false,
+        "fpr": false,
+        "macro_f1": false,
+        "accuracy": false
+      }
+    },
+    "no_vistas": {
+      "filas": 74019,
+      "recall_attack": 0.9646972745564295,
+      "precision_attack": 0.8461608984643594,
+      "fpr": 0.18774825174825174,
+      "macro_f1": 0.889819776237746,
+      "accuracy": 0.8910685094367662,
+      "matriz_confusion": [
+        [
+          29038,
+          6712
+        ],
+        [
+          1351,
+          36918
+        ]
+      ],
+      "orden_matriz": "[[TN, FP], [FN, TP]]",
+      "zero_division": {
+        "recall_attack": false,
+        "precision_attack": false,
+        "fpr": false,
+        "macro_f1": false,
+        "accuracy": false
+      }
+    }
+  }
+}

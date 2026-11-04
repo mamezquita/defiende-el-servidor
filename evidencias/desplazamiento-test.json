@@ -1,0 +1,149 @@
+{
+  "nota": "Solo descriptivo y posterior a la evaluación única: no se usó para decidir nada.",
+  "control": "train frente a validación, que salen del mismo archivo.",
+  "duplicados_en_test": {
+    "filas_sobrantes": 28386,
+    "proporcion_filas": 0.34477481416703104,
+    "proporcion_entre_normales": 0.07567567567567568,
+    "proporcion_entre_ataques": 0.5644136592252713
+  },
+  "metricas_test_completo": {
+    "filas": 82332,
+    "proporcion_ataques": 0.5506000097167566,
+    "recall_attack": 0.9699329392040943,
+    "precision_attack": 0.863406971035837,
+    "fpr": 0.188,
+    "macro_f1": 0.8959823775510924,
+    "accuracy": 0.8989578778603702
+  },
+  "metricas_test_filas_unicas": {
+    "filas": 53946,
+    "proporcion_ataques": 0.3660326993660327,
+    "recall_attack": 0.9386711232654715,
+    "precision_attack": 0.750860846668017,
+    "fpr": 0.17982456140350878,
+    "macro_f1": 0.8591674423516864,
+    "accuracy": 0.8635487339191042
+  },
+  "desplazamiento_normales_filas_unicas": {
+    "mediana_ks_control": 0.007217909612877493,
+    "maximo_ks_control": 0.011305251413993134,
+    "mediana_ks_test": 0.13065076535089482,
+    "maximo_ks_test": 0.27595562928859196,
+    "columnas_con_ks_test_mayor_que_maximo_control": 35,
+    "columnas_analizadas": 39,
+    "mayores": [
+      {
+        "columna": "sttl",
+        "ks_control": 0.005836051227702921,
+        "ks_test": 0.27595562928859196
+      },
+      {
+        "columna": "ct_state_ttl",
+        "ks_control": 0.004571371352576126,
+        "ks_test": 0.2744780118964061
+      },
+      {
+        "columna": "dload",
+        "ks_control": 0.006000166193802781,
+        "ks_test": 0.2530976128258772
+      },
+      {
+        "columna": "ackdat",
+        "ks_control": 0.007988679569778334,
+        "ks_test": 0.24719981497554394
+      },
+      {
+        "columna": "dmean",
+        "ks_control": 0.007217909612877493,
+        "ks_test": 0.222868000497578
+      }
+    ]
+  },
+  "desplazamiento_ataques_filas_unicas": {
+    "mediana_ks_control": 0.014844375970044482,
+    "maximo_ks_control": 0.018703569983111845,
+    "mediana_ks_test": 0.07128312314733895,
+    "maximo_ks_test": 0.11627067287471282,
+    "columnas_con_ks_test_mayor_que_maximo_control": 35,
+    "columnas_analizadas": 39,
+    "mayores": [
+      {
+        "columna": "tcprtt",
+        "ks_control": 0.018374368311543543,
+        "ks_test": 0.11627067287471282
+      },
+      {
+        "columna": "synack",
+        "ks_control": 0.018703569983111845,
+        "ks_test": 0.11465090475605927
+      },
+      {
+        "columna": "dinpkt",
+        "ks_control": 0.015834977395052408,
+        "ks_test": 0.11413285500343923
+      },
+      {
+        "columna": "ackdat",
+        "ks_control": 0.016157415299967615,
+        "ks_test": 0.10950434361307154
+      },
+      {
+        "columna": "ct_srv_src",
+        "ks_control": 0.010029622599629584,
+        "ks_test": 0.1079660530211084
+      }
+    ]
+  },
+  "categoricas": {
+    "proto": {
+      "variacion_total_normales_control": 0.008107050700432697,
+      "variacion_total_normales_test": 0.03975746250480245,
+      "categorias_de_test_no_vistas_en_train": [],
+      "filas_de_test_con_categorias_no_vistas": 0
+    },
+    "service": {
+      "variacion_total_normales_control": 0.007651816101447336,
+      "variacion_total_normales_test": 0.10941202421753253,
+      "categorias_de_test_no_vistas_en_train": [],
+      "filas_de_test_con_categorias_no_vistas": 0
+    },
+    "state": {
+      "variacion_total_normales_control": 0.009114716120894087,
+      "variacion_total_normales_test": 0.06343750489776848,
+      "categorias_de_test_no_vistas_en_train": [
+        "ACC",
+        "CLO"
+      ],
+      "filas_de_test_con_categorias_no_vistas": 5
+    }
+  },
+  "normales_por_state": {
+    "FIN": {
+      "proporcion_normales_train": 0.7054591109930705,
+      "proporcion_normales_test": 0.6532972972972974,
+      "tasa_falsos_positivos_test": 0.18703458547079266
+    },
+    "CON": {
+      "proporcion_normales_train": 0.23113697274066206,
+      "proporcion_normales_test": 0.17927027027027026,
+      "tasa_falsos_positivos_test": 0.0006030453791647821
+    },
+    "INT": {
+      "proporcion_normales_train": 0.04968974092763841,
+      "proporcion_normales_test": 0.12121621621621621,
+      "tasa_falsos_positivos_test": 0.5386845039018952
+    },
+    "REQ": {
+      "proporcion_normales_train": 0.012048192771084338,
+      "proporcion_normales_test": 0.04613513513513513,
+      "tasa_falsos_positivos_test": 0.008787346221441126
+    },
+    "ACC": {
+      "proporcion_normales_train": 0.0,
+      "proporcion_normales_test": 5.4054054054054054e-05,
+      "tasa_falsos_positivos_test": 0.0
+    }
+  },
+  "precision_esperada_solo_por_proporcion_de_clases": 0.9578508650045002
+}
