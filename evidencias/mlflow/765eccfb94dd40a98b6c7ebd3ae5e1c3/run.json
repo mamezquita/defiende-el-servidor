@@ -1,0 +1,51 @@
+{
+  "info": {
+    "run_id": "765eccfb94dd40a98b6c7ebd3ae5e1c3",
+    "run_name": "e3_rf",
+    "experiment_id": "1",
+    "status": "FINISHED",
+    "lifecycle_stage": "active",
+    "start_time": 1793801913209,
+    "end_time": 1793801948256
+  },
+  "params": {
+    "change": "Sustituye la regresión logística de E2 por RandomForest, con OrdinalEncoder y sin log1p, escalado ni class_weight.",
+    "config_id": "e3_rf",
+    "family": "random_forest",
+    "hypothesis": "Las interacciones no lineales entre variables de flujo reducen los falsos negativos.",
+    "model.class": "RandomForestClassifier",
+    "model.params.min_samples_leaf": "2",
+    "model.params.n_estimators": "200",
+    "model.params.n_jobs": "-1",
+    "preprocessing.categorical_encoder": "ordinal",
+    "preprocessing.log1p": "False",
+    "preprocessing.scale": "False",
+    "seed": "42",
+    "threshold": "0.5"
+  },
+  "metrics": {
+    "accuracy": 0.931607399692506,
+    "fpr": 0.08834439672003123,
+    "macro_f1": 0.9316055094281313,
+    "precision_attack": 0.91256038647343,
+    "recall_attack": 0.9522129246899889,
+    "train_seconds": 9.074821737001912,
+    "val_predict_seconds": 0.5615021919984429,
+    "zero_division": 0.0
+  },
+  "tags": {
+    "change": "Sustituye la regresión logística de E2 por RandomForest, con OrdinalEncoder y sin log1p, escalado ni class_weight.",
+    "config_id": "e3_rf",
+    "data_version": "data-v2|UNSW_NB15_testing-set.csv=e0beea40262e46168cdb81476dbc27b4|UNSW_NB15_training-set.csv=e55caabaa6cd4a8f1c06a227bcfababc|data/prepared=a4d99e14f765b0fe150ba077ca815bd5.dir",
+    "family": "random_forest",
+    "git_commit": "7750fe4d1bf98560829d1ab4c270e94ef2d61764",
+    "hypothesis": "Las interacciones no lineales entre variables de flujo reducen los falsos negativos.",
+    "mlflow.runName": "e3_rf",
+    "mlflow.source.git.branch": "main",
+    "mlflow.source.git.commit": "7750fe4d1bf98560829d1ab4c270e94ef2d61764",
+    "mlflow.source.git.repoURL": "https://github.com/mamezquita/defiende-el-servidor.git",
+    "mlflow.source.type": "LOCAL",
+    "model_sha256": "67c2813edd0376ee2ab08a3968f2ab4b5359a990b43dabf1c2f16f2897fe21c6",
+    "seed": "42"
+  }
+}

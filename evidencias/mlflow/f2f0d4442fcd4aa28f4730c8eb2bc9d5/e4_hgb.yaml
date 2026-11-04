@@ -1,0 +1,16 @@
+config_id: e4_hgb
+family: gradient_boosting
+hypothesis: "Boosting iguala al RF con menor costo de inferencia."
+change: "Sustituye el RandomForest de E3 por HistGradientBoosting, con el mismo preprocesamiento."
+seed: 42
+preprocessing:
+  categorical_encoder: ordinal
+  log1p: false
+  scale: false
+model:
+  class: HistGradientBoostingClassifier
+  params:
+    learning_rate: 0.1
+    max_iter: 300
+    early_stopping: false
+threshold: 0.5

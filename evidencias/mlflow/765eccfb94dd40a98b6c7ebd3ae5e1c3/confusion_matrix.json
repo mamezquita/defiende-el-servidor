@@ -1,0 +1,28 @@
+{
+  "orden": "[[TN, FP], [FN, TP]]",
+  "threshold": 0.5,
+  "matriz": [
+    [
+      9339,
+      905
+    ],
+    [
+      474,
+      9445
+    ]
+  ],
+  "metricas": {
+    "recall_attack": 0.9522129246899889,
+    "precision_attack": 0.91256038647343,
+    "fpr": 0.08834439672003123,
+    "macro_f1": 0.9316055094281313,
+    "accuracy": 0.931607399692506
+  },
+  "zero_division": {
+    "recall_attack": false,
+    "precision_attack": false,
+    "fpr": false,
+    "macro_f1": false,
+    "accuracy": false
+  }
+}

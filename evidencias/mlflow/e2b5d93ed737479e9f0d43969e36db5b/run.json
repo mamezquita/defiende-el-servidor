@@ -1,0 +1,51 @@
+{
+  "info": {
+    "run_id": "e2b5d93ed737479e9f0d43969e36db5b",
+    "run_name": "e2_lr_log_balanced",
+    "experiment_id": "1",
+    "status": "FINISHED",
+    "lifecycle_stage": "active",
+    "start_time": 1793801900687,
+    "end_time": 1793801908294
+  },
+  "params": {
+    "change": "Añade log1p en las numéricas no negativas y class_weight=balanced respecto a E1.",
+    "config_id": "e2_lr_log_balanced",
+    "family": "linear",
+    "hypothesis": "Reducir la asimetría de bytes/duración mejora el recall sin disparar la FPR.",
+    "model.class": "LogisticRegression",
+    "model.params.C": "1.0",
+    "model.params.class_weight": "balanced",
+    "model.params.max_iter": "2000",
+    "preprocessing.categorical_encoder": "onehot",
+    "preprocessing.log1p": "True",
+    "preprocessing.scale": "True",
+    "seed": "42",
+    "threshold": "0.5"
+  },
+  "metrics": {
+    "accuracy": 0.9054704161087139,
+    "fpr": 0.14037485357282312,
+    "macro_f1": 0.9053735835244148,
+    "precision_attack": 0.8679401230599688,
+    "recall_attack": 0.9528178243774574,
+    "train_seconds": 5.7088690879973,
+    "val_predict_seconds": 0.10269137799696182,
+    "zero_division": 0.0
+  },
+  "tags": {
+    "change": "Añade log1p en las numéricas no negativas y class_weight=balanced respecto a E1.",
+    "config_id": "e2_lr_log_balanced",
+    "data_version": "data-v2|UNSW_NB15_testing-set.csv=e0beea40262e46168cdb81476dbc27b4|UNSW_NB15_training-set.csv=e55caabaa6cd4a8f1c06a227bcfababc|data/prepared=a4d99e14f765b0fe150ba077ca815bd5.dir",
+    "family": "linear",
+    "git_commit": "7750fe4d1bf98560829d1ab4c270e94ef2d61764",
+    "hypothesis": "Reducir la asimetría de bytes/duración mejora el recall sin disparar la FPR.",
+    "mlflow.runName": "e2_lr_log_balanced",
+    "mlflow.source.git.branch": "main",
+    "mlflow.source.git.commit": "7750fe4d1bf98560829d1ab4c270e94ef2d61764",
+    "mlflow.source.git.repoURL": "https://github.com/mamezquita/defiende-el-servidor.git",
+    "mlflow.source.type": "LOCAL",
+    "model_sha256": "f69b86a88474a153960585f150ebb55a7927d6d52e16eaafe76079bb245af48c",
+    "seed": "42"
+  }
+}

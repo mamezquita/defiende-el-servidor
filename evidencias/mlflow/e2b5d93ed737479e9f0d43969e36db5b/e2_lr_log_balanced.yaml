@@ -1,0 +1,16 @@
+config_id: e2_lr_log_balanced
+family: linear
+hypothesis: "Reducir la asimetría de bytes/duración mejora el recall sin disparar la FPR."
+change: "Añade log1p en las numéricas no negativas y class_weight=balanced respecto a E1."
+seed: 42
+preprocessing:
+  categorical_encoder: onehot
+  log1p: true
+  scale: true
+model:
+  class: LogisticRegression
+  params:
+    C: 1.0
+    max_iter: 2000
+    class_weight: balanced
+threshold: 0.5

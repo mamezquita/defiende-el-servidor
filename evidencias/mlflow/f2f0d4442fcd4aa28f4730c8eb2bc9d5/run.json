@@ -1,0 +1,51 @@
+{
+  "info": {
+    "run_id": "f2f0d4442fcd4aa28f4730c8eb2bc9d5",
+    "run_name": "e4_hgb",
+    "experiment_id": "1",
+    "status": "FINISHED",
+    "lifecycle_stage": "active",
+    "start_time": 1793801965463,
+    "end_time": 1793801975479
+  },
+  "params": {
+    "change": "Sustituye el RandomForest de E3 por HistGradientBoosting, con el mismo preprocesamiento.",
+    "config_id": "e4_hgb",
+    "family": "gradient_boosting",
+    "hypothesis": "Boosting iguala al RF con menor costo de inferencia.",
+    "model.class": "HistGradientBoostingClassifier",
+    "model.params.early_stopping": "False",
+    "model.params.learning_rate": "0.1",
+    "model.params.max_iter": "300",
+    "preprocessing.categorical_encoder": "ordinal",
+    "preprocessing.log1p": "False",
+    "preprocessing.scale": "False",
+    "seed": "42",
+    "threshold": "0.5"
+  },
+  "metrics": {
+    "accuracy": 0.932450528195209,
+    "fpr": 0.08170636470128856,
+    "macro_f1": 0.932450500115116,
+    "precision_attack": 0.9181898152673248,
+    "recall_attack": 0.9470712773465068,
+    "train_seconds": 5.432845864001138,
+    "val_predict_seconds": 0.376403237998602,
+    "zero_division": 0.0
+  },
+  "tags": {
+    "change": "Sustituye el RandomForest de E3 por HistGradientBoosting, con el mismo preprocesamiento.",
+    "config_id": "e4_hgb",
+    "data_version": "data-v2|UNSW_NB15_testing-set.csv=e0beea40262e46168cdb81476dbc27b4|UNSW_NB15_training-set.csv=e55caabaa6cd4a8f1c06a227bcfababc|data/prepared=a4d99e14f765b0fe150ba077ca815bd5.dir",
+    "family": "gradient_boosting",
+    "git_commit": "7750fe4d1bf98560829d1ab4c270e94ef2d61764",
+    "hypothesis": "Boosting iguala al RF con menor costo de inferencia.",
+    "mlflow.runName": "e4_hgb",
+    "mlflow.source.git.branch": "main",
+    "mlflow.source.git.commit": "7750fe4d1bf98560829d1ab4c270e94ef2d61764",
+    "mlflow.source.git.repoURL": "https://github.com/mamezquita/defiende-el-servidor.git",
+    "mlflow.source.type": "LOCAL",
+    "model_sha256": "186e9c50ef5634a2135f299a555de16f0e1f76de7c5c8bbb8f43e2c1c908014f",
+    "seed": "42"
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "estado": "borrador",
+  "politica": "configs/threshold_policy.yaml",
+  "conjunto_de_seleccion": "validacion",
+  "versiones": [
+    {
+      "version": "v1",
+      "config_id": "e1_lr_base",
+      "run_id": "88648102f7934473aa0b3296937261b9",
+      "git_commit": "7750fe4d1bf98560829d1ab4c270e94ef2d61764",
+      "data_version": "data-v2|UNSW_NB15_testing-set.csv=e0beea40262e46168cdb81476dbc27b4|UNSW_NB15_training-set.csv=e55caabaa6cd4a8f1c06a227bcfababc|data/prepared=a4d99e14f765b0fe150ba077ca815bd5.dir",
+      "umbral": 0.5,
+      "metricas_validacion": {
+        "recall_attack": 0.976711362032463,
+        "precision_attack": 0.8406073752711497,
+        "fpr": 0.17932448262397502,
+        "macro_f1": 0.897020235886681,
+        "accuracy": 0.8974358974358975,
+        "confusion_matrix": [
+          [
+            8407,
+            1837
+          ],
+          [
+            231,
+            9688
+          ]
+        ]
+      },
+      "razon_seleccion": "Referencia fijada de antemano: e1_lr_base con umbral 0.5.",
+      "hf_repo": "",
+      "hf_sha": "",
+      "model_sha256": ""
+    },
+    {
+      "version": "v2",
+      "config_id": "e4_hgb",
+      "run_id": "f2f0d4442fcd4aa28f4730c8eb2bc9d5",
+      "git_commit": "7750fe4d1bf98560829d1ab4c270e94ef2d61764",
+      "data_version": "data-v2|UNSW_NB15_testing-set.csv=e0beea40262e46168cdb81476dbc27b4|UNSW_NB15_training-set.csv=e55caabaa6cd4a8f1c06a227bcfababc|data/prepared=a4d99e14f765b0fe150ba077ca815bd5.dir",
+      "umbral": 0.64,
+      "metricas_validacion": {
+        "recall_attack": 0.9035184998487751,
+        "precision_attack": 0.9472571609766409,
+        "fpr": 0.048711440843420536,
+        "macro_f1": 0.9276794611767425,
+        "accuracy": 0.9277885235332044,
+        "confusion_matrix": [
+          [
+            9745,
+            499
+          ],
+          [
+            957,
+            8962
+          ]
+        ]
+      },
+      "razon_seleccion": "Mayor recall_attack (0.9035) entre las configuraciones que cumplen fpr <= 0.05 en validación, con su mejor umbral.",
+      "hf_repo": "",
+      "hf_sha": "",
+      "model_sha256": "",
+      "regla_aplicada": "restriccion",
+      "comparacion_con_v1": {
+        "mejora": [
+          "precision_attack: 0.8406 -> 0.9473 (+0.1066)",
+          "fpr: 0.1793 -> 0.0487 (-0.1306)",
+          "macro_f1: 0.8970 -> 0.9277 (+0.0307)",
+          "accuracy: 0.8974 -> 0.9278 (+0.0304)",
+          "falsos positivos: 1837 -> 499 (-1338)"
+        ],
+        "empeora": [
+          "recall_attack: 0.9767 -> 0.9035 (-0.0732)",
+          "falsos negativos: 231 -> 957 (+726)"
+        ],
+        "igual": []
+      },
+      "errores_aceptados": [
+        "957 ataques no detectados en validación (9.65% de los ataques): pasan como tráfico normal.",
+        "499 falsas alarmas en validación (4.87% del tráfico normal): conexiones normales marcadas como ataque."
+      ]
+    }
+  ]
+}
