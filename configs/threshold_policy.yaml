@@ -1,0 +1,15 @@
+objetivo:
+  maximizar: recall_attack
+restriccion:
+  metrica: fpr
+  maximo: 0.05
+  conjunto: validacion
+desempate: macro_f1
+respaldo:
+  # Si ningún umbral cumple la restricción: el de menor fpr con recall_attack >= 0.90.
+  minimizar: fpr
+  recall_attack_minimo: 0.90
+  # Si tampoco hay ninguno:
+  umbral_por_defecto: 0.5
+# Para que la elección sea determinista: si aún hay empate, gana el umbral más bajo.
+desempate_final: umbral_menor
