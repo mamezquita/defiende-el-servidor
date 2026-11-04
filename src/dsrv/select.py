@@ -140,7 +140,18 @@ def accepted_errors(row: pd.Series) -> list[str]:
     ]
 
 
+def _assert_not_published() -> None:
+    """Evita vaciar hf_repo, hf_sha y model_sha256 de una selección ya publicada."""
+    path = resolve_path(SELECTION_JSON)
+    if not path.exists():
+        return
+    selection = json.loads(path.read_text(encoding="utf-8"))
+    if any(item["hf_sha"] for item in selection["versiones"]):
+        raise RuntimeError(f"{SELECTION_JSON.as_posix()} ya está publicada; no se sobrescribe")
+
+
 def main() -> None:
+    _assert_not_published()
     client = open_tracking()
     policy = load_yaml(POLICY_PATH)
     runs = latest_finished_runs(client)

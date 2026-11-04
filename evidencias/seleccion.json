@@ -1,5 +1,5 @@
 {
-  "estado": "borrador",
+  "estado": "publicada",
   "politica": "configs/threshold_policy.yaml",
   "conjunto_de_seleccion": "validacion",
   "versiones": [
@@ -28,9 +28,9 @@
         ]
       },
       "razon_seleccion": "Referencia fijada de antemano: e1_lr_base con umbral 0.5.",
-      "hf_repo": "",
-      "hf_sha": "",
-      "model_sha256": ""
+      "hf_repo": "MiguelAngelAB/unsw-nb15-defiende-servidor",
+      "hf_sha": "6010585cc8729c73d88d5b0d9acb360e0065a351",
+      "model_sha256": "2a968766d5e661ebfe05b174370c5272fc99bdd0befeafc4d17cdc2e365d98ab"
     },
     {
       "version": "v2",
@@ -57,9 +57,9 @@
         ]
       },
       "razon_seleccion": "Mayor recall_attack (0.9035) entre las configuraciones que cumplen fpr <= 0.05 en validación, con su mejor umbral.",
-      "hf_repo": "",
-      "hf_sha": "",
-      "model_sha256": "",
+      "hf_repo": "MiguelAngelAB/unsw-nb15-defiende-servidor",
+      "hf_sha": "d0375af37f9abf49930b4ec76b7430446098f1f9",
+      "model_sha256": "186e9c50ef5634a2135f299a555de16f0e1f76de7c5c8bbb8f43e2c1c908014f",
       "regla_aplicada": "restriccion",
       "comparacion_con_v1": {
         "mejora": [
