@@ -11,3 +11,4 @@ hf_staging/
 *:Zone.Identifier
 mlflow.db
 .pytest_cache/
+informe/informe.html

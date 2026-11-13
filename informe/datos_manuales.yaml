@@ -1,0 +1,5 @@
+# Datos que se completan a mano. Después de editarlos, regenera el informe:
+#   python -m dsrv.build_report && bash scripts/build_pdf.sh
+integrantes: "[COMPLETAR: nombre completo] - Grupo [COMPLETAR: A/B]"
+declaracion_uso_ia: "[COMPLETAR: declaración de uso de IA]"
+contribucion_integrantes: "[COMPLETAR: contribución de cada integrante]"
