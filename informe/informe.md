@@ -1,6 +1,6 @@
 # Defiende el servidor: trazabilidad MLOps con UNSW-NB15
 
-**Integrantes:** [COMPLETAR: nombre completo] - Grupo [COMPLETAR: A/B]
+**Integrantes:** Miguel Ángel Amézquita Briceño - Grupo 4-6 p. m.
 
 Código: [github.com/mamezquita/defiende-el-servidor](https://github.com/mamezquita/defiende-el-servidor) · Modelos: [huggingface.co/MiguelAngelAB/unsw-nb15-defiende-servidor](https://huggingface.co/MiguelAngelAB/unsw-nb15-defiende-servidor) · Fecha: 2026-11-13
 
@@ -98,11 +98,11 @@ La FPR es casi igual en filas vistas y no vistas, así que el solapamiento no ex
 
 ## Declaración de uso de IA
 
-[COMPLETAR: declaración de uso de IA]
+Usé Claude Code (Anthropic) como asistente de programación durante todo el taller. Bajo mis instrucciones, fase por fase, la herramienta escribió el código, las pruebas, los scripts y la documentación, y ejecutó los comandos de verificación. Yo definí las fases y sus requisitos, tomé las decisiones del proyecto (política de limpieza, política de umbral, selección de v2, publicación y visibilidad de los repositorios), revisé y aprobé cada resultado y cada commit, y ejecuté los pasos que requerían credenciales. Todas las cifras del informe salen del código y de las evidencias del repositorio, no de la herramienta.
 
 ## Contribución de cada integrante
 
-[COMPLETAR: contribución de cada integrante]
+Trabajo individual: Miguel Ángel Amézquita Briceño realizó todas las fases del taller.
 
 <div style="page-break-after: always"></div>
 
