@@ -1,0 +1,41 @@
+RESPALDO DEL REMOTE DVC - Defiende el servidor
+==============================================
+
+DagsHub, el remote DVC del proyecto, está privado por una caída del servicio y se hará público apenas
+funcione. Mientras tanto, este ZIP contiene el remote completo: los datos de data-v1 y data-v2 (CSV
+originales de UNSW-NB15 y datos preparados).
+
+Requisitos: Git, Python 3.11 y el repo instalado según su README.
+
+1. Descomprime el ZIP en una carpeta. Crea dvc-respaldo/ y este LEEME.txt:
+
+     unzip dvc-remote-respaldo.zip -d <carpeta>
+   o, sin unzip:
+     python3 -m zipfile -e dvc-remote-respaldo.zip <carpeta>
+
+2. Clona el repo e instálalo:
+
+     git clone https://github.com/mamezquita/defiende-el-servidor.git
+     cd defiende-el-servidor
+     python3.11 -m venv .venv
+     source .venv/bin/activate
+     pip install -r requirements.txt
+     pip install -e .
+
+3. Usa el respaldo como remote por defecto y descarga los datos. <ruta> es la ruta absoluta de la
+   carpeta dvc-respaldo del paso 1:
+
+     dvc remote add -d respaldo <ruta>
+     dvc pull
+
+   Nota: "-d" modifica .dvc/config, que está versionado, y deja cambios sin commit. Si luego quieres
+   entrenar, que exige el árbol limpio, usa en su lugar:
+
+     dvc remote add --local -d respaldo <ruta>
+
+4. Comprueba las huellas: los SHA-256 deben coincidir con auditoria.json y manifest.json.
+
+     python -m dsrv.verify_data --out verificacion
+     dvc status
+
+   Debe decir "Datos: OK" y "Data and pipelines are up to date."
